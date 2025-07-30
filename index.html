@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavanya Bani - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .title {
+            font-size: 1.2em;
+            color: #bdc3c7;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            transition: transform 0.3s ease;
+        }
+
+        .linkedin-link {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .linkedin-link:hover {
+            color: #2980b9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+        .section:nth-child(5) { animation-delay: 1.0s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .education-item, .skill-category {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .education-item:hover, .skill-category:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .degree {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .institution {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .year {
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 25px;
+            border: 2px solid #ecf0f1;
+            display: inline-block;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-item:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .skill-item:hover::before {
+            left: 100%;
+        }
+
+        .experience-note {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-note::before {
+            content: '💫';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.5em;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .domain-highlight {
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .domain-highlight::before {
+            content: '📊';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 1.5em;
+        }
+
+        .certification-note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #856404;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 2em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1 class="name">LAVANYA BANI</h1>
+                <p class="title">B.Tech Student | Computer Science & Engineering - Data Science</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        📧 <span>Available upon request</span>
+                    </div>
+                    <div class="contact-item">
+                        💼 <a href="https://www.linkedin.com/in/lavanya-bani-46a185283/" class="linkedin-link" target="_blank">LinkedIn Profile</a>
+                    </div>
+                    <div class="contact-item">
+                        📱 <span>Available upon request</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <div class="degree">Bachelor of Technology - Computer Science & Engineering (Data Science)</div>
+                    <div class="institution">University/College Name</div>
+                    <div class="year">2023 - Present (2nd Year)</div>
+                </div>
+                <div class="education-item">
+                    <div class="degree">Higher Secondary Education (12th)</div>
+                    <div class="institution">School Name</div>
+                    <div class="year">2023</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Domain Knowledge</h2>
+                <div class="domain-highlight">
+                    Data Science Specialization - Exploring data analysis, machine learning, and statistical modeling
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 style="margin-bottom: 15px; color: #2c3e50;">Programming Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">C</span>
+                            <span class="skill-item">C++</span>
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 style="margin-bottom: 15px; color: #2c3e50;">Learning Areas</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Data Structures</span>
+                            <span class="skill-item">Algorithms</span>
+                            <span class="skill-item">Database Management</span>
+                            <span class="skill-item">Object-Oriented Programming</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-note">
+                    Fresh Graduate | Eager to learn and contribute to innovative projects
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certification-note">
+                    Currently pursuing relevant certifications in Data Science and Programming
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to skill items
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click animation to sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+
+            // Animate progress on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
